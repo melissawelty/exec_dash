@@ -1,52 +1,55 @@
 # dashboard_generator.py
 
 import operator
-import os
+
 import pandas
 
 
 
-def to_usd(my_price):
-  # return "${0:,.2f}".format(my_price)
-  return f"${my_price:,.2f}"
+# def to_usd(my_price):
+#   # return "${0:,.2f}".format(my_price)
+#   return f"${my_price:,.2f}"
 
 # INFO INPUTS
 
-csv_filename = "sales-201803.csv" 
+csv_filepath = "sales-201803.csv" 
+df = pandas.read_csv(csv_filepath)
 
-csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
+# breakpoint()
 
-csv_data = pandas.read_csv(csv_filepath)
+# csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
 
-
-
-monthly_total = csv_data["sales price"].sum()
-
-product_totals = product_totals.sort_values("sales price", ascending=False)
+# csv_data = pandas.read_csv(csv_filepath)
 
 
-top_sellers = []
-rank = 1
-for i, row in product_totals.iterrows():
-    d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
-    top_sellers.append(d)
-    rank = rank + 1
 
-print("-----------------------")
-print("MONTH: March 2018")
+# monthly_total = csv_data["sales price"].sum()
 
-print("-----------------------")
-print("CRUNCHING THE DATA...")
+# product_totals = product_totals.sort_values("sales price", ascending=False)
 
-print("-----------------------")
-print("TOTAL MONTHLY SALES:")
-print(f"MONTH: {month} {year}")
-print(f"TOTAL SALES: {to_usd(total_sales)}")
 
-print("-----------------------")
-print("TOP SELLING PRODUCTS:")
-for d in top_sellers:
-    print("  " + str(d["rank"]) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
+# top_sellers = []
+# rank = 1
+# for i, row in product_totals.iterrows():
+#     d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
+#     top_sellers.append(d)
+#     rank = rank + 1
 
-print("-----------------------")
-print("VISUALIZING THE DATA...")
+# print("-----------------------")
+# print("MONTH: March 2018")
+
+# print("-----------------------")
+# print("CRUNCHING THE DATA...")
+
+# print("-----------------------")
+# print("TOTAL MONTHLY SALES:")
+# print(f"MONTH: {month} {year}")
+# print(f"TOTAL SALES: {to_usd(total_sales)}")
+
+# print("-----------------------")
+# print("TOP SELLING PRODUCTS:")
+# for d in top_sellers:
+#     print("  " + str(d["rank"]) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
+
+# print("-----------------------")
+# print("VISUALIZING THE DATA...")
