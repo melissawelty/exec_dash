@@ -11,10 +11,23 @@ def to_usd(my_price):
 
 csv_filename = "sales-201803.csv" 
 
-csv_filepath = os.path.join("data", csv_filename)
+csv_filepath = os.path.join(os.path.dirname(__file__),"data", csv_filename)
 
 rows = [] 
 
+with open(csv_filepath, "r") as csv_file:
+  reader = csv.DictReader(csv_file)
+  for row in reader:
+      print(row)
+  #for od in reader:
+   # rows.append(dict(od))
+
+sales_price = [float(row["sales price"]) for row in rows]
+
+total_sales = sum(sales_price)
+
+month = "MARCH"
+year = 2018 
 
 
 print("-----------------------")
@@ -24,7 +37,9 @@ print("-----------------------")
 print("CRUNCHING THE DATA...")
 
 print("-----------------------")
-print("TOTAL MONTHLY SALES: $12,000.71")
+print("TOTAL MONTHLY SALES:")
+print(f"MONTH: {month} {year}")
+print(f"TOTAL SALES: {to_usd(total_sales)}")
 
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
